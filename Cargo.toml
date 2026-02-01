@@ -1,0 +1,25 @@
+[package]
+name = "axum-http-service"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = "0.7"
+tokio = { version = "1.0", features = ["full"] }
+tower = "0.4"
+tower-service = "0.3"
+http = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+uuid = { version = "1.0", features = ["v4", "fast-rng"] }
+bytes = "1.0"
+pin-project-lite = "0.2"
+futures-util = "0.3"
+
+# For rate limiting (using token bucket manually)
+std-semaphore = "0.1" # Actually `tokio::sync::Semaphore` is fine
+tower-http = { version = "0.6.8", features = ["fs", "trace"] }
+
+# We will implement custom logical middleware, so we primarily need traits.
